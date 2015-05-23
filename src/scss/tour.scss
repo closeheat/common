@@ -1,0 +1,44 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+$height: 30px;
+$arrow-height: calc($height / 2);
+
+.arrow-right {
+  &:after, &:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &:after {
+    border-left-color: #222;
+    border-width: $arrow-height;
+    margin-top: calc(-1 * $arrow-height);
+  }
+
+  &:before {
+    border-left-color: #222;
+    border-width: $arrow-height;
+    border-width: 15px;
+    margin-top: -15px;
+  }
+}
+
+.closeheat-common-logo-guide {
+  @extend .arrow-right;
+
+  font-family: 'Raleway';
+  position: fixed;
+  bottom: 8;
+  right: 50;
+  background-color: #222;
+  color: #fff;
+  height: $height;
+  line-height: 30px;
+  padding: 0 10px;
+}
