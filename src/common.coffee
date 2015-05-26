@@ -1,31 +1,54 @@
 module.exports =
 class Common
   constructor: ->
+    @server = window.CLOSEHEAT_SERVER
+    @slug = window.CLOSEHEAT_SLUG
 
   init: ->
-    if 'has_cookie_for_closeheat_and_is_authed'
+    @isAuthedForApp (resp) =>
       @appendButton()
-      @loadTour()
+      @loadTour(resp.tour_css)
+
+  isAuthedForApp: (callback) ->
+    xhr = new XMLHttpRequest()
+
+    xhr.onreadystatechange = ->
+      if xhr.readyState == XMLHttpRequest.DONE
+        if xhr.status == 200
+          resp = JSON.parse(xhr.responseText)
+
+          if resp.belongs_to_user
+            callback(resp)
+        else if xhr.status == 400
+          console.log('There was an error 400')
+        else
+          console.log('something else other than 200 was returned')
+
+    xhr.withCredentials = true
+    xhr.open('GET', @server + '/common?slug=' + @slug, true)
+
+    xhr.send();
+
 
   appendButton: ->
     img = document.createElement('img')
-    img.src = 'http://localhost:4000/assets/logo-square.png'
+    img.src = @server + '/logo-square.png'
     img.width = 20
     img.height = 23
 
     link = document.createElement('a')
-    link.href = 'http://staging.closeheat.com/apps/damp-dew-994/live_edit'
+    link.href = @server + '/apps/' + @slug + '/live_edit'
     link.id = 'closeheat-common'
     link.innerHTML = img.outerHTML
 
     link.style.position = 'fixed'
-    link.style.bottom = 10
-    link.style.right = 10
+    link.style.bottom = '10px'
+    link.style.right = '10px'
 
     document.body.appendChild(link)
 
-  loadTour: ->
-    @load 'link', 'css/tour.css', =>
+  loadTour: (tour_css) ->
+    @load 'link', @server + tour_css, =>
       @startTour()
 
   startTour: ->

@@ -2,33 +2,61 @@
 var Common;
 
 module.exports = Common = (function() {
-  function Common() {}
+  function Common() {
+    this.server = window.CLOSEHEAT_SERVER;
+    this.slug = window.CLOSEHEAT_SLUG;
+  }
 
   Common.prototype.init = function() {
-    if ('has_cookie_for_closeheat_and_is_authed') {
-      this.appendButton();
-      return this.loadTour();
-    }
+    return this.isAuthedForApp((function(_this) {
+      return function(resp) {
+        _this.appendButton();
+        return _this.loadTour(resp.tour_css);
+      };
+    })(this));
+  };
+
+  Common.prototype.isAuthedForApp = function(callback) {
+    var xhr;
+    xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      var resp;
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          resp = JSON.parse(xhr.responseText);
+          if (resp.belongs_to_user) {
+            return callback(resp);
+          }
+        } else if (xhr.status === 400) {
+          return console.log('There was an error 400');
+        } else {
+          return console.log('something else other than 200 was returned');
+        }
+      }
+    };
+    xhr.withCredentials = true;
+    xhr.open('GET', this.server + '/common?slug=' + this.slug, true);
+    return xhr.send();
   };
 
   Common.prototype.appendButton = function() {
     var img, link;
     img = document.createElement('img');
-    img.src = 'http://localhost:4000/assets/logo-square.png';
+    img.src = this.server + '/logo-square.png';
     img.width = 20;
     img.height = 23;
     link = document.createElement('a');
-    link.href = 'http://staging.closeheat.com/apps/damp-dew-994/live_edit';
+    link.href = this.server + '/apps/' + this.slug + '/live_edit';
     link.id = 'closeheat-common';
     link.innerHTML = img.outerHTML;
     link.style.position = 'fixed';
-    link.style.bottom = 10;
-    link.style.right = 10;
+    link.style.bottom = '10px';
+    link.style.right = '10px';
     return document.body.appendChild(link);
   };
 
-  Common.prototype.loadTour = function() {
-    return this.load('link', 'css/tour.css', (function(_this) {
+  Common.prototype.loadTour = function(tour_css) {
+    return this.load('link', this.server + tour_css, (function(_this) {
       return function() {
         return _this.startTour();
       };
