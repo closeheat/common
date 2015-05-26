@@ -10,6 +10,9 @@ module.exports = Common = (function() {
     return this.isAuthedForApp((function(_this) {
       return function(resp) {
         _this.appendButton();
+        if (resp.tour_of_edit_button_finished) {
+          return;
+        }
         return _this.loadTour(resp.tour_css);
       };
     })(this));

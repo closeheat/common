@@ -7,6 +7,8 @@ class Common
   init: ->
     @isAuthedForApp (resp) =>
       @appendButton()
+
+      return if resp.tour_of_edit_button_finished
       @loadTour(resp.tour_css)
 
   isAuthedForApp: (callback) ->
