@@ -1,5 +1,58 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway);
-.arrow-right:after, .closeheat-common-logo-guide:after, .arrow-right:before, .closeheat-common-logo-guide:before {
+.closeheat-arrow, .closeheat-arrow-right, .closeheat-arrow-left {
+  position: fixed;
+  background: #dc2240;
+  color: #fff;
+  font-family: 'Raleway';
+  font-size: 22px; }
+  .closeheat-arrow:after, .closeheat-arrow-right:after, .closeheat-arrow-left:after, .closeheat-arrow:before, .closeheat-arrow-right:before, .closeheat-arrow-left:before {
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none; }
+  .closeheat-arrow:after, .closeheat-arrow-right:after, .closeheat-arrow-left:after {
+    border-left-color: #dc2240;
+    border-width: 25px;
+    margin-top: -25px; }
+  .closeheat-arrow:before, .closeheat-arrow-right:before, .closeheat-arrow-left:before {
+    border-left-color: #dc2240;
+    border-width: 25px;
+    margin-top: -25px; }
+
+.closeheat-arrow-right {
+  left: 100%; }
+
+.closeheat-arrow-left {
+  right: 100%; }
+
+.closeheat-tooltip, .closeheat-tooltip-left, .closeheat-tour-code-editor, .closeheat-tour-preview-button, .closeheat-tour-deploy-button, .closeheat-tooltip-right, .closeheat-tour-common-logo {
+  background-color: #dc2240;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 10px;
+  font-family: 'Raleway';
+  font-size: 16px;
+  z-index: 999;
+  position: fixed; }
+
+.closeheat-tooltip-left:after, .closeheat-tour-code-editor:after, .closeheat-tour-preview-button:after, .closeheat-tour-deploy-button:after {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-right-color: #dc2240;
+  border-width: 25px;
+  margin-top: -25px; }
+
+.closeheat-tooltip-right:after, .closeheat-tour-common-logo:after {
   left: 100%;
   top: 50%;
   border: solid transparent;
@@ -7,24 +60,24 @@
   height: 0;
   width: 0;
   position: absolute;
-  pointer-events: none; }
-.arrow-right:after, .closeheat-common-logo-guide:after {
-  border-left-color: #dc2240;
-  border-width: 25px;
-  margin-top: -25px; }
-.arrow-right:before, .closeheat-common-logo-guide:before {
+  pointer-events: none;
   border-left-color: #dc2240;
   border-width: 25px;
   margin-top: -25px; }
 
-.closeheat-common-logo-guide {
-  font-family: 'Raleway';
+.closeheat-tour-code-editor {
+  top: 45vh;
+  left: 41%; }
+
+.closeheat-tour-preview-button {
+  top: 7px;
+  left: 155px; }
+
+.closeheat-tour-deploy-button {
+  top: 7px;
+  left: 270px; }
+
+.closeheat-tour-common-logo {
   font-size: 22px;
-  position: fixed;
   bottom: 10;
-  right: 70;
-  background-color: #dc2240;
-  color: #fff;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 10px; }
+  right: 70; }

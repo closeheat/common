@@ -1,12 +1,18 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 
-$height: 50px;
-$arrow-height: $height / 2;
+$tooltip-height: 50px;
+$arrow-height: $tooltip-height / 2;
 $bg: #dc2240;
+$text-color: #fff;
 
-.arrow-right {
+.closeheat-arrow {
+  position: fixed;
+  background: $bg;
+  color: $text-color;
+  font-family: 'Raleway';
+  font-size: 22px;
+
   &:after, &:before {
-    left: 100%;
     top: 50%;
     border: solid transparent;
     content: " ";
@@ -29,17 +35,91 @@ $bg: #dc2240;
   }
 }
 
-.closeheat-common-logo-guide {
-  @extend .arrow-right;
+.closeheat-arrow-right {
+  @extend .closeheat-arrow;
 
+  left: 100%;
+}
+
+.closeheat-arrow-left {
+  @extend .closeheat-arrow;
+
+  right: 100%;
+}
+
+.closeheat-tooltip {
+  background-color: $bg;
+  color: $text-color;
+  height: $tooltip-height;
+  line-height: $tooltip-height;
+  padding: 0 10px;
   font-family: 'Raleway';
-  font-size: 22px;
+  font-size: 16px;
+  z-index: 999;
   position: fixed;
+}
+
+.closeheat-tooltip-left {
+  @extend .closeheat-tooltip;
+
+  &:after {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-right-color: $bg;
+    border-width: $arrow-height;
+    margin-top: -1 * $arrow-height;
+  }
+}
+
+.closeheat-tooltip-right {
+  @extend .closeheat-tooltip;
+
+  &:after {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-left-color: $bg;
+    border-width: $arrow-height;
+    margin-top: -1 * $arrow-height;
+  }
+}
+
+.closeheat-tour-code-editor {
+  @extend .closeheat-tooltip-left;
+
+  top: 45vh;
+  left: 41%;
+}
+
+.closeheat-tour-preview-button {
+  @extend .closeheat-tooltip-left;
+
+  top: 7px;
+  left: 155px;
+}
+
+.closeheat-tour-deploy-button {
+  @extend .closeheat-tooltip-left;
+
+  top: 7px;
+  left: 270px;
+}
+
+.closeheat-tour-common-logo {
+  @extend .closeheat-tooltip-right;
+
+  font-size: 22px;
   bottom: 10;
   right: 70;
-  background-color: $bg;
-  color: #fff;
-  height: $height;
-  line-height: $height;
-  padding: 0 10px;
 }

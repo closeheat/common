@@ -55,7 +55,7 @@ class Common
   startTour: ->
     div = document.createElement('div')
     div.innerHTML = 'Click the logo to edit your landing page'
-    div.className = 'closeheat-common-logo-guide'
+    div.className = 'closeheat-tour-common-logo'
     document.body.appendChild(div)
 
   load: (tag, url, callback) ->

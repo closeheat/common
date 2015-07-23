@@ -70,7 +70,7 @@ module.exports = Common = (function() {
     var div;
     div = document.createElement('div');
     div.innerHTML = 'Click the logo to edit your landing page';
-    div.className = 'closeheat-common-logo-guide';
+    div.className = 'closeheat-tour-common-logo';
     return document.body.appendChild(div);
   };
 
