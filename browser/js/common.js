@@ -46,8 +46,8 @@ module.exports = Common = (function() {
     var img, link;
     img = document.createElement('img');
     img.src = this.server + '/logo-square.png';
-    img.width = 20;
-    img.height = 23;
+    img.width = 30;
+    img.height = 35;
     link = document.createElement('a');
     link.href = this.server + '/apps/' + this.slug + '/live_edit';
     link.id = 'closeheat-common';
@@ -69,7 +69,7 @@ module.exports = Common = (function() {
   Common.prototype.startTour = function() {
     var div;
     div = document.createElement('div');
-    div.innerHTML = 'Click the logo to edit your website';
+    div.innerHTML = 'Click the logo to edit your landing page';
     div.className = 'closeheat-common-logo-guide';
     return document.body.appendChild(div);
   };

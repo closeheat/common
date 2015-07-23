@@ -29,14 +29,13 @@ class Common
     xhr.withCredentials = true
     xhr.open('GET', @server + '/common?slug=' + @slug, true)
 
-    xhr.send();
-
+    xhr.send()
 
   appendButton: ->
     img = document.createElement('img')
     img.src = @server + '/logo-square.png'
-    img.width = 20
-    img.height = 23
+    img.width = 30
+    img.height = 35
 
     link = document.createElement('a')
     link.href = @server + '/apps/' + @slug + '/live_edit'
@@ -55,7 +54,7 @@ class Common
 
   startTour: ->
     div = document.createElement('div')
-    div.innerHTML = 'Click the logo to edit your website'
+    div.innerHTML = 'Click the logo to edit your landing page'
     div.className = 'closeheat-common-logo-guide'
     document.body.appendChild(div)
 

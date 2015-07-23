@@ -9,22 +9,22 @@
   position: absolute;
   pointer-events: none; }
 .arrow-right:after, .closeheat-common-logo-guide:after {
-  border-left-color: #222;
-  border-width: calc($height / 2);
-  margin-top: calc(-1 * $arrow-height); }
+  border-left-color: #dc2240;
+  border-width: 25px;
+  margin-top: -25px; }
 .arrow-right:before, .closeheat-common-logo-guide:before {
-  border-left-color: #222;
-  border-width: calc($height / 2);
-  border-width: 15px;
-  margin-top: -15px; }
+  border-left-color: #dc2240;
+  border-width: 25px;
+  margin-top: -25px; }
 
 .closeheat-common-logo-guide {
   font-family: 'Raleway';
+  font-size: 22px;
   position: fixed;
-  bottom: 8;
-  right: 50;
-  background-color: #222;
+  bottom: 10;
+  right: 70;
+  background-color: #dc2240;
   color: #fff;
-  height: 30px;
-  line-height: 30px;
+  height: 50px;
+  line-height: 50px;
   padding: 0 10px; }

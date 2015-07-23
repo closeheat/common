@@ -1,7 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 
-$height: 30px;
-$arrow-height: calc($height / 2);
+$height: 50px;
+$arrow-height: $height / 2;
+$bg: #dc2240;
 
 .arrow-right {
   &:after, &:before {
@@ -16,16 +17,15 @@ $arrow-height: calc($height / 2);
   }
 
   &:after {
-    border-left-color: #222;
+    border-left-color: $bg;
     border-width: $arrow-height;
-    margin-top: calc(-1 * $arrow-height);
+    margin-top: -1 * $arrow-height;
   }
 
   &:before {
-    border-left-color: #222;
+    border-left-color: $bg;
     border-width: $arrow-height;
-    border-width: 15px;
-    margin-top: -15px;
+    margin-top: -1 * $arrow-height;
   }
 }
 
@@ -33,12 +33,13 @@ $arrow-height: calc($height / 2);
   @extend .arrow-right;
 
   font-family: 'Raleway';
+  font-size: 22px;
   position: fixed;
-  bottom: 8;
-  right: 50;
-  background-color: #222;
+  bottom: 10;
+  right: 70;
+  background-color: $bg;
   color: #fff;
   height: $height;
-  line-height: 30px;
+  line-height: $height;
   padding: 0 10px;
 }
